@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import "./Projects.css";
 import { projects } from "../assets/assets";
 import { useNavigate } from "react-router-dom";
@@ -6,6 +6,10 @@ import { useNavigate } from "react-router-dom";
 const Projects = () => {
   const [activeFilter, setActiveFilter] = useState("all");
   const navigate = useNavigate();
+
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, []);
 
   const filters = [
     { id: "all", label: "All Projects" },
@@ -16,7 +20,6 @@ const Projects = () => {
     { id: "C", label: "C" },
     { id: "python", label: "Python" },
     { id: "java", label: "Java" },
-
   ];
 
   const filteredProjects =
