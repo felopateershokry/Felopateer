@@ -1,8 +1,12 @@
 import React from "react";
 import "./Hero.css";
 import myPhoto from "../assets/me.jpg"; // put your image here
+import { useNavigate } from "react-router-dom";
 
 export default function Hero() {
+
+  const navigate = useNavigate();
+
   return (
     <section className="hero">
       {/* LEFT SIDE */}
@@ -21,7 +25,7 @@ export default function Hero() {
         </p>
 
         <div className="hero-actions">
-          <a href="#projects" className="btn-primary">
+          <a className="btn-primary" onClick={() => navigate("/projects")}>
             View Projects
           </a>
           <a href="#contact" className="btn-ghost">
