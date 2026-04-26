@@ -9,6 +9,7 @@ const SingleProject = () => {
 
   const [animate, setAnimate] = useState(false);
   const [activeImage, setActiveImage] = useState(0);
+  const [isAnimating, setIsAnimating] = useState(false);
 
   const project = projects.find((p) => p.id === Number(id));
 
@@ -21,40 +22,71 @@ const SingleProject = () => {
 
   const images = project.images || [project.image];
 
-  const nextImage = () => {
-    setActiveImage((prev) => (prev + 1) % images.length);
-  };
-
-  const prevImage = () => {
-    setActiveImage((prev) => (prev - 1 + images.length) % images.length);
-  };
-
+  // safe index helper
   const getImage = (index) => {
     return images[(index + images.length) % images.length];
   };
 
+  // prevent spam clicks / improve UX
+  const changeImage = (action) => {
+    if (isAnimating) return;
+
+    setIsAnimating(true);
+    action();
+
+    setTimeout(() => {
+      setIsAnimating(false);
+    }, 450);
+  };
+
+  const nextImage = () => {
+    changeImage(() => {
+      setActiveImage((prev) => (prev + 1) % images.length);
+    });
+  };
+
+  const prevImage = () => {
+    changeImage(() => {
+      setActiveImage((prev) => (prev - 1 + images.length) % images.length);
+    });
+  };
+
   return (
     <div className={`single-project ${animate ? "active" : ""}`}>
-      {/* HERO CAROUSEL */}
+      {/* =========================
+          HERO CAROUSEL
+      ========================= */}
       <div className="hero-carousel">
         <button className="nav left" onClick={prevImage}>
           ‹
         </button>
 
         <div className="image-track">
-          {/* LEFT (prev blurred) */}
+          {/* LEFT PREVIEW */}
           <div className="side-image left">
-            <img src={getImage(activeImage - 1)} alt="prev" />
+            <img
+              src={getImage(activeImage - 1)}
+              alt="previous project view"
+              loading="lazy"
+            />
           </div>
 
-          {/* CENTER */}
+          {/* MAIN IMAGE */}
           <div className="main-image">
-            <img src={getImage(activeImage)} alt={project.title} />
+            <img
+              src={getImage(activeImage)}
+              alt={project.title}
+              loading="eager"
+            />
           </div>
 
-          {/* RIGHT (next blurred) */}
+          {/* RIGHT PREVIEW */}
           <div className="side-image right">
-            <img src={getImage(activeImage + 1)} alt="next" />
+            <img
+              src={getImage(activeImage + 1)}
+              alt="next project view"
+              loading="lazy"
+            />
           </div>
         </div>
 
@@ -63,7 +95,9 @@ const SingleProject = () => {
         </button>
       </div>
 
-      {/* ARTICLE (magazine style) */}
+      {/* =========================
+          ARTICLE SECTION
+      ========================= */}
       <div className="article">
         <div className="title-block">
           <h1>{project.title}</h1>

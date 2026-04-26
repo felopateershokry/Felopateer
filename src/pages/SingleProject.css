@@ -1,6 +1,17 @@
 /* =========================
-   USE GLOBAL THEME
+   GLOBAL FIXES
 ========================= */
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html,
+body {
+  overflow-x: hidden;
+}
 
 .single-project {
   background: var(--paper);
@@ -22,16 +33,17 @@
   margin-bottom: 5rem;
   background: var(--paper);
   border-bottom: 1px solid var(--rule);
+  padding: 0 1rem;
 }
 
 /* TRACK */
-
 .image-track {
   display: flex;
   align-items: center;
   justify-content: center;
   gap: 2.5rem;
   transition: 0.6s ease;
+  max-width: 100%;
 }
 
 /* =========================
@@ -40,6 +52,7 @@
 
 .main-image {
   width: 58vw;
+  max-width: 720px;
   height: 68vh;
   border-radius: 14px;
   overflow: hidden;
@@ -59,25 +72,13 @@
   transform: scale(1.04);
 }
 
-/* magazine transition */
-
-@keyframes magFade {
-  from {
-    opacity: 0;
-    transform: translateY(20px) scale(.97);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0) scale(1);
-  }
-}
-
 /* =========================
-   SIDE PREVIEW IMAGES
+   SIDE IMAGES
 ========================= */
 
 .side-image {
   width: 18vw;
+  max-width: 180px;
   height: 42vh;
   border-radius: 12px;
   overflow: hidden;
@@ -124,6 +125,7 @@
   border-radius: 50%;
   cursor: pointer;
   transition: .25s ease;
+  z-index: 5;
 }
 
 .nav:hover {
@@ -135,7 +137,7 @@
 .nav.right { right: 30px; }
 
 /* =========================
-   ARTICLE (EDITORIAL STYLE)
+   ARTICLE
 ========================= */
 
 .article {
@@ -171,7 +173,7 @@
 }
 
 /* =========================
-   MAGAZINE DESCRIPTION
+   DESCRIPTION
 ========================= */
 
 .desc {
@@ -186,8 +188,6 @@
 .desc:hover {
   color: var(--ink);
 }
-
-/* editorial rule line */
 
 .desc::before {
   content: "";
@@ -224,7 +224,7 @@
 }
 
 /* =========================
-   LINKS (MAGAZINE FOOTER)
+   LINKS
 ========================= */
 
 .links {
@@ -263,4 +263,82 @@
 .back:hover {
   background: var(--ink);
   color: #fff;
+}
+
+/* =========================
+   ANIMATION
+========================= */
+
+@keyframes magFade {
+  from {
+    opacity: 0;
+    transform: translateY(20px) scale(.97);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+/* =========================
+   RESPONSIVE
+========================= */
+
+@media (max-width: 1024px) {
+  .main-image {
+    width: 70vw;
+    height: 60vh;
+  }
+
+  .side-image {
+    width: 14vw;
+    height: 35vh;
+  }
+}
+
+@media (max-width: 768px) {
+
+  .hero-carousel {
+    height: auto;
+    padding: 3rem 1rem;
+  }
+
+  .image-track {
+    gap: 1rem;
+  }
+
+  /* hide side images on mobile */
+  .side-image {
+    display: none;
+  }
+
+  .main-image {
+    width: 92vw;
+    height: 55vh;
+  }
+
+  .nav {
+    width: 42px;
+    height: 42px;
+    font-size: 1.2rem;
+  }
+
+  .title-block h1 {
+    font-size: 2rem;
+  }
+
+  .desc {
+    font-size: 0.95rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .main-image {
+    height: 45vh;
+  }
+
+  .links {
+    flex-direction: column;
+    gap: 10px;
+  }
 }

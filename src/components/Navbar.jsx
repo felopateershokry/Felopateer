@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
 import "./Navbar.css";
 
 const navLinks = [
@@ -11,13 +11,8 @@ const navLinks = [
 ];
 
 export default function Navbar() {
-  const [active, setActive] = useState("");
+  const location = useLocation();
   const [menuOpen, setMenuOpen] = useState(false);
-
-  const handleClick = (label) => {
-    setActive(label);
-    setMenuOpen(false);
-  };
 
   return (
     <nav className="navbar">
@@ -29,6 +24,7 @@ export default function Navbar() {
 
       {/* MAIN NAV */}
       <div className="nav-main">
+        {/* LOGO */}
         <Link to="/" className="nav-logo">
           Felopateer<em>.</em>
         </Link>
@@ -40,17 +36,21 @@ export default function Navbar() {
 
         {/* LINKS */}
         <ul className={`nav-links ${menuOpen ? "open" : ""}`}>
-          {navLinks.map((link) => (
-            <li key={link.label}>
-              <Link
-                to={link.path}
-                className={active === link.label ? "active" : ""}
-                onClick={() => handleClick(link.label)}
-              >
-                {link.label}
-              </Link>
-            </li>
-          ))}
+          {navLinks.map((link) => {
+            const isActive = location.pathname === link.path;
+
+            return (
+              <li key={link.label}>
+                <Link
+                  to={link.path}
+                  className={isActive ? "active" : ""}
+                  onClick={() => setMenuOpen(false)}
+                >
+                  {link.label}
+                </Link>
+              </li>
+            );
+          })}
         </ul>
       </div>
     </nav>

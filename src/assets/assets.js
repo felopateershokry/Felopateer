@@ -1,3 +1,9 @@
+import me from "./me.jpg";
+
+export const assets = {
+  me,
+};
+
 export const projects = [
   {
     id: 1,
@@ -54,7 +60,8 @@ export const projects = [
     num: "04",
     title: "Chat Application",
     subtitle: "Real-Time Messaging App",
-    descriptionCard: "Real-time chat app with sockets, online users tracking, and typing indicators.",
+    descriptionCard:
+      "Real-time chat app with sockets, online users tracking, and typing indicators.",
     description:
       "Real-time chat app with sockets, online users tracking, and typing indicators.",
     tech: ["React", "Socket.io", "Node.js", "Express"],
@@ -87,7 +94,8 @@ export const projects = [
     num: "06",
     title: "Blog API System",
     subtitle: "Content Management Backend",
-    descriptionCard: "Backend system for blogs with authentication, CRUD posts, and admin control.",
+    descriptionCard:
+      "Backend system for blogs with authentication, CRUD posts, and admin control.",
     description:
       "Backend system for blogs with authentication, CRUD posts, and admin control.",
     tech: ["Node.js", "Express", "MongoDB", "JWT"],
@@ -103,7 +111,8 @@ export const projects = [
     num: "07",
     title: "Task Manager App",
     subtitle: "Productivity Tool",
-    descriptionCard: "Task management app with drag & drop, deadlines, and team collaboration.",
+    descriptionCard:
+      "Task management app with drag & drop, deadlines, and team collaboration.",
     description:
       "Task management app with drag & drop, deadlines, and team collaboration.",
     tech: ["React", "Redux", "Node.js"],
@@ -135,7 +144,8 @@ export const projects = [
     num: "09",
     title: "DevFlow SaaS Platform",
     subtitle: "Multi-Feature Developer Ecosystem",
-    descriptionCard: "Comprehensive SaaS platform for developers with real-time collaboration, analytics, and CI/CD simulation.",
+    descriptionCard:
+      "Comprehensive SaaS platform for developers with real-time collaboration, analytics, and CI/CD simulation.",
     description:
       "DevFlow is a full-scale SaaS platform built for developers to manage projects, collaborate in real-time, track tasks, and deploy applications. It includes authentication, workspace management, team roles, real-time notifications, analytics dashboard, and CI/CD pipeline simulation. The system is designed with scalability in mind using a microservices-inspired backend architecture and a highly responsive frontendvksjlavbklajvbjkdv dkjv kadj bvkdfb vfmd vm,vjkfdsb ekbjl erbl UI.",
 
@@ -163,3 +173,31 @@ export const projects = [
     github: "#",
   },
 ];
+
+export const skills = {
+  languages: ["C", "C++", "Java", "Python", "JavaScript", "TypeScript", "SQL"],
+
+  frontend: [
+    "React",
+    "Next.js",
+    "Redux",
+    "HTML5",
+    "CSS3",
+    "Tailwind CSS",
+    "Responsive Design",
+  ],
+
+  backend: ["Node.js", "Express.js", "REST APIs", "JWT Authentication"],
+
+  databases: ["MongoDB", "MySQL", "Database Design"],
+
+  computerScience: [
+    "OOP",
+    "Data Structures",
+    "Algorithms",
+    "Problem Solving",
+    "System Design",
+  ],
+
+  tools: ["Git", "GitHub", "Postman", "VS Code"],
+};

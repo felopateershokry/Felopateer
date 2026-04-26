@@ -1,0 +1,664 @@
+/* ========================================
+   GLOBAL FIXES
+======================================== */
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html,
+body {
+  overflow-x: hidden;
+}
+
+/* ========================================
+   ABOUT PAGE WRAPPER
+======================================== */
+
+.about-page {
+  background: var(--paper);
+  color: var(--ink);
+  font-family: "DM Sans", sans-serif;
+}
+
+/* ========================================
+   ABOUT BODY WRAPPER
+======================================== */
+
+.about-body {
+  padding: 0 3rem 2.5rem;
+}
+
+/* ========================================
+   LEAD STORY (TWO-COLUMN NEWSPAPER)
+======================================== */
+
+.lead-story {
+  display: grid;
+  grid-template-columns: 1fr 1px 1fr;
+  gap: 0;
+  border-bottom: 1px solid var(--rule);
+  padding: 2.5rem 0;
+}
+
+.lead-col {
+  padding: 0 2rem;
+}
+
+.lead-col:first-child {
+  padding-left: 0;
+}
+
+.lead-col:last-child {
+  padding-right: 0;
+}
+
+.lead-divider {
+  background: var(--rule);
+}
+
+/* SECTION HED */
+.section-hed {
+  font-size: 10.5px;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--ink3);
+  margin-bottom: 1.5rem;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.section-hed::after {
+  content: "";
+  flex: 1;
+  height: 1px;
+  background: var(--rule);
+}
+
+/* DROP CAP */
+.lead-drop-cap::first-letter {
+  font-family: "Playfair Display", serif;
+  font-size: 4.2rem;
+  font-weight: 900;
+  line-height: 0.75;
+  float: left;
+  margin-right: 0.12em;
+  margin-top: 0.1em;
+  color: var(--accent);
+}
+
+.lead-drop-cap {
+  font-family: "Libre Baskerville", serif;
+  font-size: 15px;
+  line-height: 1.85;
+  color: var(--ink2);
+}
+
+.lead-p {
+  font-family: "Libre Baskerville", serif;
+  font-size: 14px;
+  line-height: 1.85;
+  color: var(--ink2);
+  margin-top: 1rem;
+}
+
+/* -------------------------------------- */
+.cv-btn {
+  display: inline-block;
+  margin-top: 1.8rem;
+  padding: 10px 18px;
+  font-size: 12px;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  text-decoration: none;
+  color: var(--ink2);
+  border: 1px solid var(--ink);
+  transition: all 0.3s ease;
+}
+
+.cv-btn:hover {
+  background: var(--accent);
+  border-color: var(--accent);
+  color: #fff;
+}
+/* -------------------------------------- */
+
+/* PULL QUOTE */
+/* container */
+.philosophy-image-only {
+  position: relative;
+  margin-top: 1.8rem;
+  border-radius: 16px;
+  overflow: hidden;
+
+  /* depth */
+  box-shadow: 
+    0 10px 30px rgba(0,0,0,0.12),
+    0 2px 8px rgba(0,0,0,0.08);
+
+  background: #000;
+}
+
+/* image */
+.philosophy-image-only img {
+  width: 100%;
+  height: 430px;
+  object-fit: cover;
+  display: block;
+
+  /* magazine tone */
+  /* filter: grayscale(100%) contrast(1.08) brightness(0.95); */
+
+  transition: transform 0.7s ease, filter 0.7s ease;
+}
+
+/* cinematic gradient */
+.philosophy-image-only::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+
+  background: linear-gradient(
+    to top,
+    rgba(0, 0, 0, 0.55),
+    rgba(0, 0, 0, 0.15),
+    transparent
+  );
+
+  opacity: 0.9;
+  transition: opacity 0.5s ease;
+}
+
+/* grain texture (magazine feel) */
+.philosophy-image-only::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+
+  background-image: url("https://www.transparenttextures.com/patterns/asfalt-light.png");
+  opacity: 0.08;
+  mix-blend-mode: overlay;
+  pointer-events: none;
+}
+
+/* hover effect (premium subtle) */
+.philosophy-image-only:hover img {
+  transform: scale(1.06);
+  filter: grayscale(80%) contrast(1.1) brightness(1);
+}
+
+.philosophy-image-only:hover::before {
+  opacity: 0.6;
+}
+
+/* optional editorial label */
+.philosophy-image-only span {
+  position: absolute;
+  bottom: 14px;
+  right: 18px;
+
+  font-size: 10px;
+  letter-spacing: 0.25em;
+  text-transform: uppercase;
+
+  color: rgba(255,255,255,0.7);
+}
+
+/* ========================================
+   THREE-COL CARDS
+======================================== */
+
+.three-col {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 0;
+  background: var(--rule);
+  border: 1px solid var(--rule);
+  margin-top: 2.5rem;
+}
+
+.t-card {
+  background: var(--paper);
+  padding: 1.75rem 1.6rem;
+  transition: background 0.2s;
+}
+
+.t-card:hover {
+  background: #f3f1ec;
+}
+
+.card-tag {
+  font-size: 10px;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--accent);
+  font-weight: 500;
+  margin-bottom: 0.7rem;
+}
+
+.t-card h3 {
+  font-family: "Playfair Display", serif;
+  font-size: 1.25rem;
+  font-weight: 700;
+  line-height: 1.15;
+  letter-spacing: -0.01em;
+  margin-bottom: 0.8rem;
+}
+
+.t-card h3 em {
+  font-style: italic;
+  color: var(--accent);
+}
+
+.t-card p {
+  font-size: 13px;
+  color: var(--ink2);
+  line-height: 1.75;
+}
+
+/* ========================================
+   MAGAZINE COVER (kept for reference)
+======================================== */
+
+.mag-cover {
+  padding: 5rem 4rem;
+  border-bottom: 1px solid var(--rule);
+  display: grid;
+  grid-template-columns: 1.3fr 0.9fr;
+  gap: 4rem;
+  align-items: center;
+}
+
+.mag-cover-left,
+.mag-cover-right {
+  min-width: 0;
+}
+
+.mag-cover-left {
+  display: flex;
+  flex-direction: column;
+  gap: 1.4rem;
+  max-width: 700px;
+}
+
+.mag-kicker {
+  font-size: 11px;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: var(--accent);
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  opacity: 0.9;
+}
+
+.mag-kicker::before {
+  content: "";
+  width: 42px;
+  height: 2px;
+  background: var(--accent);
+  opacity: 0.7;
+}
+
+.mag-name {
+  font-family: "Playfair Display", serif;
+  font-size: clamp(3.5rem, 5.8vw, 6.8rem);
+  line-height: 0.95;
+  letter-spacing: -0.04em;
+  margin: 0;
+  color: var(--ink);
+}
+
+.mag-intro {
+  font-family: "Libre Baskerville", serif;
+  font-size: 1.1rem;
+  line-height: 1.9;
+  color: var(--ink2);
+  max-width: 580px;
+}
+
+.mag-buttons {
+  display: flex;
+  gap: 1rem;
+  flex-wrap: wrap;
+  margin-top: 0.5rem;
+}
+
+.mag-cover-right {
+  display: flex;
+  justify-content: center;
+}
+
+.mag-image {
+  width: 100%;
+  max-width: 420px;
+  height: 520px;
+  object-fit: cover;
+  border-radius: 18px;
+  border: 1px solid var(--rule);
+  box-shadow: 0 35px 90px rgba(0, 0, 0, 0.12);
+  filter: grayscale(100%);
+  transition: 0.5s ease;
+}
+
+.mag-image:hover {
+  filter: grayscale(0%);
+  transform: scale(1.04);
+}
+
+/* ========================================
+   BUTTONS
+======================================== */
+
+.btn-primary {
+  background: var(--ink);
+  color: var(--paper);
+  padding: 0.95rem 1.6rem;
+  border-radius: 10px;
+  font-size: 0.8rem;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  border: 1px solid var(--ink);
+  text-decoration: none;
+  transition: 0.3s ease;
+}
+
+.btn-primary:hover {
+  background: transparent;
+  color: var(--ink);
+  transform: translateY(-3px);
+}
+
+.btn-ghost {
+  background: transparent;
+  border: 1px solid var(--rule);
+  color: var(--ink);
+  padding: 0.9rem 1.5rem;
+  border-radius: 10px;
+  font-size: 0.8rem;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  text-decoration: none;
+  transition: 0.3s ease;
+}
+
+.btn-ghost:hover {
+  border-color: var(--accent);
+  color: var(--accent);
+  transform: translateY(-3px);
+}
+
+/* ========================================
+   SECTIONS
+======================================== */
+
+.section-block {
+  padding: 3.5rem 3rem;
+  border-bottom: 1px solid var(--rule);
+}
+
+.section-block h2 {
+  font-family: "Playfair Display", serif;
+  font-size: clamp(2rem, 3.5vw, 3rem);
+  font-weight: 800;
+  line-height: 1.1;
+  letter-spacing: -0.02em;
+  margin-bottom: 2rem;
+  position: relative;
+}
+
+.section-block h2::after {
+  content: "";
+  width: 60px;
+  height: 2px;
+  background: var(--accent);
+  position: absolute;
+  left: 0;
+  bottom: -10px;
+}
+
+/* ========================================
+   CARDS
+======================================== */
+
+.card {
+  border: 1px solid var(--rule);
+  padding: 2rem;
+  margin-bottom: 1.2rem;
+  transition: 0.25s ease;
+  background: var(--paper);
+}
+
+.card:hover {
+  transform: translateY(-4px);
+  border-color: var(--accent);
+}
+
+.card h3 {
+  font-family: "Playfair Display", serif;
+  font-size: 1.3rem;
+}
+
+.card p {
+  font-size: 1rem;
+  color: var(--ink2);
+  line-height: 1.7;
+}
+
+/* ========================================
+   SKILLS
+======================================== */
+
+.skills-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+  gap: 1rem;
+}
+
+.skill {
+  border: 1px solid var(--rule);
+  padding: 0.9rem;
+  text-align: center;
+  font-size: 11px;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--ink2);
+  transition: 0.25s ease;
+}
+
+.skill:hover {
+  background: var(--ink);
+  color: var(--paper);
+}
+
+/* ========================================
+   RESPONSIVE
+======================================== */
+
+@media (max-width: 900px) {
+  .mag-cover {
+    grid-template-columns: 1fr;
+    padding: 3.5rem 1.5rem;
+    gap: 2.5rem;
+  }
+
+  .mag-cover-right {
+    justify-content: flex-start;
+  }
+
+  .mag-image {
+    max-width: 100%;
+    height: 420px;
+  }
+}
+
+@media (max-width: 768px) {
+  .about-body {
+    padding-left: 1.2rem;
+    padding-right: 1.2rem;
+  }
+
+  .lead-story {
+    grid-template-columns: 1fr;
+  }
+
+  .lead-divider {
+    display: none;
+  }
+
+  .lead-col {
+    padding: 0;
+    margin-bottom: 1.5rem;
+  }
+
+  .three-col {
+    grid-template-columns: 1fr;
+  }
+
+  .mag-cover {
+    grid-template-columns: 1fr;
+    padding: 3rem 1.5rem;
+  }
+
+  .mag-cover-right {
+    display: none;
+  }
+
+  .mag-name {
+    font-size: 2.8rem;
+  }
+
+  .section-block {
+    padding: 2.5rem 1.5rem;
+  }
+
+  .section-block h2 {
+    font-size: 2rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .mag-name {
+    font-size: 2.8rem;
+  }
+
+  .mag-intro {
+    font-size: 1rem;
+  }
+}
+
+.skills-section {
+  margin-top: 3rem;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start; /* ✔ correct */
+  text-align: left;
+}
+
+/* constrain width */
+.skills-header,
+.skills-wrapper {
+  width: 100%;
+  max-width: 900px;
+}
+
+/* HEADER */
+.skills-header {
+  margin-bottom: 2.5rem;
+  text-align: left;
+}
+
+/* KICKER */
+.skills-kicker {
+  font-size: 10px;
+  letter-spacing: 0.25em;
+  text-transform: uppercase;
+  color: var(--accent);
+
+  display: flex;
+  justify-content: flex-start; /* ✔ correct */
+  align-items: center;        /* ✔ correct */
+  gap: 10px;
+}
+
+.skills-kicker::before {
+  content: "";
+  width: 30px;
+  height: 1px;
+  background: var(--accent);
+}
+
+/* TITLE */
+.skills-title {
+  font-family: "Playfair Display", serif;
+  font-size: 2.4rem;
+  font-weight: 900;
+  letter-spacing: -0.03em;
+  color: var(--ink);
+}
+
+/* SUBTITLE */
+.skills-subtitle {
+  font-size: 13px;
+  color: var(--ink3);
+  font-family: "Libre Baskerville", serif;
+  font-style: italic;
+  margin-top: 0.4rem;
+}
+
+/* CATEGORY */
+.skills-category {
+  margin-bottom: 2rem;
+  text-align: left;
+}
+
+/* CATEGORY TITLE */
+.skills-category-title {
+  font-size: 11px;
+  letter-spacing: 0.25em;
+  text-transform: uppercase;
+  color: var(--ink3);
+  margin-bottom: 1rem;
+
+  display: flex;
+  justify-content: flex-start; /* ✔ correct */
+  align-items: center;         /* ✔ correct */
+  gap: 12px;
+}
+
+/* line */
+.skills-category-title::after {
+  content: "";
+  flex: 1;
+  height: 1px;
+  background: var(--rule);
+}
+
+/* SKILLS GRID */
+.skills-list {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: flex-start; /* ✔ correct */
+  gap: 0.6rem;
+}
+
+/* SKILL ITEM */
+.skill-item {
+  font-size: 12px;
+  padding: 6px 12px;
+  border: 1px solid var(--rule);
+  background: var(--paper);
+  color: var(--ink2);
+  font-family: "DM Sans", sans-serif;
+  letter-spacing: 0.04em;
+  transition: all 0.25s ease;
+}
+
+.skill-item:hover {
+  background: var(--ink);
+  color: var(--paper);
+  transform: translateY(-2px);
+}
