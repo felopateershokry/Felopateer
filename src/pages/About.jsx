@@ -2,10 +2,20 @@ import React from "react";
 import "./About.css";
 import { assets } from "../assets/assets";
 import { skills } from "../assets/assets";
+import { useEffect } from "react";
+import { useLocation } from "react-router-dom";
 
 
 
 export default function About() {
+
+  const { pathname } = useLocation();
+
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, [pathname]);
+
+
   return (
     <main className="about-page">
       {/* ABOUT ME — replaced with editorial lead story */}
@@ -17,26 +27,29 @@ export default function About() {
             <h1 className="about-title">About Me</h1>
 
             <p className="lead-drop-cap">
-              I'm Felopateer Shokry — an engineering student at the Faculty of
-              Engineering, Alexandria University, and a MERN Stack developer
-              focused on building scalable, high-performance web applications
-              that balance clean architecture with intuitive user experience.
+              I'm Felopateer Shokry — a Computer & Communication Engineering
+              student at the Faculty of Engineering, Alexandria University, and
+              a MERN Stack developer passionate about building scalable,
+              high-performance web applications that combine clean architecture
+              with intuitive user experience.
             </p>
 
             <p className="lead-p">
-              What started as curiosity quickly evolved into a long-term craft.
-              Over the past few years, I've worked across the full stack —
-              designing RESTful APIs, structuring efficient databases, and
-              building responsive frontends with React that prioritize usability
-              and performance.
+              What began as curiosity about how systems communicate and operate
+              evolved into a long-term passion for software engineering. Over
+              the past few years, I've worked across the full stack — designing
+              RESTful APIs, structuring efficient databases, and developing
+              responsive React interfaces focused on performance, reliability,
+              and usability.
             </p>
 
             <p className="lead-p">
-              I enjoy turning complex problems into simple, elegant solutions.
-              Whether it's optimizing backend logic or refining UI details, I
-              care about the small things — because they are what shape great
-              products. My goal is not just to write code, but to build systems
-              that are maintainable, scalable, and meaningful.
+              I enjoy transforming complex engineering problems into simple,
+              elegant solutions. Whether optimizing backend logic, improving
+              system performance, or refining UI interactions, I focus on
+              building maintainable, scalable, and meaningful systems that
+              bridge software development with communication and engineering
+              principles.
             </p>
 
             <a
@@ -68,10 +81,11 @@ export default function About() {
               <em>Engineering</em>
             </h3>
             <p>
-              Enrolled at Alexandria University, pursuing a degree that blends
-              theoretical foundations with real-world engineering
-              problem-solving. Mathematics, systems thinking, and analytical
-              rigor are baked into everything I do.
+              Enrolled in Computer & Communication Engineering at Alexandria
+              University, pursuing a degree that blends strong theoretical
+              foundations with practical system design and real-world
+              engineering problem-solving. Mathematics, networking, and
+              analytical thinking shape my approach to technology.
             </p>
           </div>
           <div className="t-card">
@@ -120,7 +134,7 @@ export default function About() {
       </section>
 
       {/* EXPERIENCE */}
-      <section className="section-block">
+      <section id="experience" className="section-block">
         <h2>Work Experience</h2>
 
         <div className="card">
@@ -173,7 +187,7 @@ export default function About() {
       </section>
 
       {/* SKILLS */}
-      <section className="section-block skills-section">
+      <section id="skills" className="section-block skills-section">
         <div className="skills-header">
           <div className="skills-kicker">Technical Proficiency</div>
           <h2 className="skills-title">Skills</h2>

@@ -1,0 +1,608 @@
+/* =========================
+   MAGAZINE LAYOUT (NEW)
+========================= */
+
+.mag-layout {
+  display: grid;
+  grid-template-columns: 2fr 1fr;
+  grid-template-rows: auto auto;
+  gap: 1.5rem;
+  padding: 3rem;
+  background: var(--paper);
+}
+
+/* =========================
+   HERO FEATURE (EDITORIAL COVER)
+========================= */
+
+.mag-hero {
+  grid-column: 1 / 2;
+  grid-row: 1 / 3;
+
+  padding: 3rem;
+  border: 1px solid var(--rule);
+  background: linear-gradient(135deg, #f7f3ea, #fff);
+  position: relative;
+  cursor: pointer;
+
+  transition: 0.4s ease;
+}
+
+.mag-hero:hover {
+  transform: scale(1.01);
+  border-color: var(--accent);
+}
+
+.mag-hero h1 {
+  font-family: "Playfair Display", serif;
+  font-size: 3rem;
+  margin: 1rem 0;
+}
+
+.mag-hero p {
+  font-family: "Libre Baskerville", serif;
+  color: var(--ink2);
+  line-height: 1.8;
+  max-width: 80%;
+}
+
+.mag-hero .read {
+  position: absolute;
+  bottom: 2rem;
+  right: 2rem;
+  font-size: 11px;
+  letter-spacing: 0.2em;
+  color: var(--accent);
+}
+
+/* =========================
+   STACK CARDS (RIGHT SIDE)
+========================= */
+
+/* =========================
+   STACK LAYOUT
+========================= */
+
+.mag-stack {
+  display: flex;
+  flex-direction: column;
+  gap: 1.2rem;
+}
+
+
+/* =========================
+   CARD BASE
+========================= */
+
+.mag-card {
+  position: relative;
+  border: 1px solid var(--rule);
+  padding: 1.6rem;
+  background: var(--paper);
+  cursor: pointer;
+  transition: all 0.35s ease;
+  overflow: hidden;
+}
+
+/* magazine accent line */
+.mag-card::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 3px;
+  height: 100%;
+  background: transparent;
+  transition: 0.35s ease;
+}
+
+.mag-card:hover::before {
+  background: var(--accent);
+}
+
+/* hover interaction */
+.mag-card:hover {
+  transform: translateY(-6px);
+  background: #f6f2ea;
+  box-shadow: 0 14px 30px rgba(0,0,0,0.06);
+}
+
+
+/* =========================
+   TAG
+========================= */
+
+.tag {
+  font-size: 10px;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--ink3);
+}
+
+
+/* =========================
+   TITLE
+========================= */
+
+.card-title {
+  font-family: "Playfair Display", serif;
+  font-size: 1.35rem;
+  font-weight: 500;
+  margin: 0.6rem 0 0.4rem;
+  line-height: 1.2;
+}
+
+
+/* =========================
+   DESCRIPTION
+========================= */
+
+.card-text {
+  font-size: 13px;
+  line-height: 1.6;
+  color: var(--ink2);
+}
+
+
+/* =========================
+   META LINE
+========================= */
+
+.card-meta {
+  margin-top: 0.7rem;
+  font-size: 10px;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: var(--ink3);
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+}
+
+
+/* =========================
+   READ LINK
+========================= */
+
+.card-read {
+  margin-top: 1.1rem;
+  font-size: 11px;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--ink3);
+  transition: 0.3s ease;
+}
+
+.mag-card:hover .card-read {
+  transform: translateX(6px);
+}
+
+
+/* =========================
+   ACCENT CARD (CONTACT)
+========================= */
+
+.mag-card.accent {
+  border: 1px solid var(--accent);
+  background: #f8f1e6;
+}
+
+.mag-card.accent::before {
+  background: var(--accent);
+}
+
+
+/* =========================
+   MOBILE VIEW
+========================= */
+
+@media (max-width: 768px) {
+
+  .mag-card {
+    padding: 1.3rem;
+  }
+
+  /* magazine mobile behavior */
+  .card-text {
+    display: none;
+  }
+
+  .card-title {
+    font-size: 1.2rem;
+  }
+
+  .card-meta {
+    font-size: 9px;
+  }
+
+  .card-read {
+    font-size: 10px;
+  }
+}
+/* =========================
+   WIDE FEATURE (PROJECTS)
+========================= */
+
+.mag-wide {
+  grid-column: 1 / 3;
+
+  border: 1px solid var(--rule);
+  padding: 2.5rem;
+  background: var(--paper);
+  cursor: pointer;
+
+  transition: 0.4s ease;
+}
+
+.mag-wide:hover {
+  transform: translateY(-5px);
+  border-color: var(--accent);
+}
+
+.mag-wide h2 {
+  font-family: "Playfair Display", serif;
+  font-size: 2.2rem;
+}
+
+/* =========================
+   TAG STYLE
+========================= */
+
+.tag {
+  font-size: 10px;
+  letter-spacing: 0.25em;
+  text-transform: uppercase;
+  color: var(--accent);
+}
+
+/* =========================
+   RESPONSIVE
+========================= */
+
+@media (max-width: 900px) {
+  .mag-layout {
+    grid-template-columns: 1fr;
+  }
+
+  .mag-hero {
+    grid-column: auto;
+    grid-row: auto;
+  }
+
+  .mag-wide {
+    grid-column: auto;
+  }
+}
+
+/* =========================
+   HERO META
+========================= */
+
+.hero-meta {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 1.5rem;
+}
+
+.issue {
+  font-size: 10px;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--ink3);
+}
+
+/* =========================
+   TITLES
+========================= */
+
+.hero-title {
+  font-family: "Playfair Display", serif;
+  font-size: 3.2rem;
+  margin: 0.5rem 0;
+}
+
+.hero-subtitle {
+  font-family: "Libre Baskerville", serif;
+  font-size: 1rem;
+  font-style: italic;
+  color: var(--ink2);
+  margin-bottom: 1.2rem;
+}
+
+/* =========================
+   TEXT
+========================= */
+
+.hero-text {
+  font-family: "Libre Baskerville", serif;
+  font-size: 14px;
+  line-height: 1.9;
+  color: var(--ink2);
+  max-width: 85%;
+}
+
+/* =========================
+   HIGHLIGHTS (MAGAZINE FACT BOX)
+========================= */
+
+.hero-highlights {
+  display: flex;
+  gap: 2rem;
+  margin-top: 2rem;
+  border-top: 1px solid var(--rule);
+  padding-top: 1.5rem;
+  flex-wrap: wrap;
+}
+
+.highlight {
+  display: flex;
+  flex-direction: column;
+}
+
+.h-label {
+  font-size: 10px;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--ink3);
+}
+
+.h-value {
+  font-size: 13px;
+  color: var(--ink);
+  font-weight: 500;
+}
+
+/* =========================
+   FOOTER CTA
+========================= */
+
+.hero-footer {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 2.5rem;
+  align-items: center;
+}
+
+.hint {
+  font-size: 11px;
+  color: var(--ink3);
+}
+
+/* =========================
+   WIDE META HEADER
+========================= */
+
+.wide-meta {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 1.2rem;
+}
+
+/* =========================
+   TITLES
+========================= */
+
+.wide-title {
+  font-family: "Playfair Display", serif;
+  font-size: 2.6rem;
+  margin: 0.3rem 0;
+}
+
+.wide-subtitle {
+  font-family: "Libre Baskerville", serif;
+  font-size: 15px;
+  font-style: italic;
+  color: var(--ink2);
+  margin-bottom: 1rem;
+}
+
+/* =========================
+   TEXT
+========================= */
+
+.wide-text {
+  font-family: "Libre Baskerville", serif;
+  font-size: 14px;
+  line-height: 1.9;
+  color: var(--ink2);
+  max-width: 80%;
+}
+
+/* =========================
+   HIGHLIGHT GRID (FACT BOX STYLE)
+========================= */
+
+.wide-grid {
+  display: flex;
+  gap: 2rem;
+  margin-top: 2rem;
+  padding-top: 1.5rem;
+  border-top: 1px solid var(--rule);
+  flex-wrap: wrap;
+}
+
+.wide-item {
+  display: flex;
+  flex-direction: column;
+}
+
+.w-label {
+  font-size: 10px;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--ink3);
+}
+
+.w-value {
+  font-size: 13px;
+  color: var(--ink);
+  font-weight: 500;
+}
+
+/* =========================
+   FOOTER CTA
+========================= */
+
+.wide-footer {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 2.5rem;
+  align-items: center;
+}
+
+.hint {
+  font-size: 11px;
+  color: var(--ink3);
+}
+
+/* =========================
+   HOVER EFFECT (EDITORIAL LIFT)
+========================= */
+
+.mag-wide {
+  transition: all 0.35s ease;
+  cursor: pointer;
+}
+
+.mag-wide:hover {
+  transform: translateY(-6px);
+  border-color: var(--accent);
+  background: #f7f3ea;
+}
+
+@media (max-width: 768px) {
+
+  /* =========================
+     HERO CONTAINER
+  ========================= */
+
+  .mag-hero {
+    padding: 1.4rem;
+  }
+
+  /* =========================
+     TITLE (more compact, stronger hierarchy)
+  ========================= */
+
+  .hero-title {
+    font-size: 1.8rem;
+    line-height: 1.1;
+    margin: 0.6rem 0;
+  }
+
+  /* =========================
+     SUBTITLE (lighter + cleaner)
+  ========================= */
+
+  .hero-subtitle {
+    font-size: 12.5px;
+    line-height: 1.5;
+    color: var(--ink2);
+    margin-bottom: 0.8rem;
+  }
+
+  /* =========================
+     BODY TEXT (shorter feel)
+     - removes long reading fatigue
+  ========================= */
+
+  .hero-text {
+    font-size: 12.5px;
+    line-height: 1.6;
+    max-width: 100%;
+    color: var(--ink2);
+
+    /* optional: makes it feel like teaser copy */
+    display: -webkit-box;
+    -webkit-line-clamp: 3;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+  }
+
+  /* =========================
+     HIGHLIGHTS (STACKED CARD STYLE)
+  ========================= */
+
+  .hero-highlights {
+    flex-direction: column;
+    gap: 0.8rem;
+    margin-top: 1.2rem;
+    padding-top: 1.2rem;
+  }
+
+  .highlight {
+    padding: 0.6rem 0;
+    border-bottom: 1px solid var(--rule);
+  }
+
+  .highlight:last-child {
+    border-bottom: none;
+  }
+
+  .h-label {
+    font-size: 9px;
+    letter-spacing: 0.18em;
+  }
+
+  .h-value {
+    font-size: 12px;
+  }
+
+  /* =========================
+     FOOTER (STACKED CTA)
+  ========================= */
+
+  .hero-footer {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 0.6rem;
+    margin-top: 1.5rem;
+  }
+
+  .read {
+    font-size: 11px;
+    letter-spacing: 0.15em;
+  }
+
+  .hint {
+    font-size: 10px;
+    color: var(--ink3);
+  }
+}
+@media (max-width: 768px) {
+
+  .mag-wide {
+    padding: 1.8rem;
+  }
+
+  .wide-title {
+    font-size: 1.8rem;
+  }
+
+  .wide-subtitle {
+    font-size: 13px;
+    line-height: 1.5;
+  }
+
+  /* 🚫 remove long paragraph feel */
+  .wide-text {
+    display: none;
+  }
+
+  /* stack fact boxes vertically */
+  .wide-grid {
+    flex-direction: column;
+    gap: 1rem;
+  }
+
+  .wide-footer {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 0.8rem;
+  }
+}
+
+
+

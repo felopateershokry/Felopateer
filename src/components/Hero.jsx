@@ -11,7 +11,7 @@ export default function Hero() {
     <section className="hero">
       {/* LEFT SIDE */}
       <div className="hero-left">
-        <div className="hero-kicker">Portfolio · 2025</div>
+        <div className="hero-kicker">Portfolio · 2026</div>
 
         <h1>
           Felopateer

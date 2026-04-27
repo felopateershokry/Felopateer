@@ -9,19 +9,19 @@ import '../components/Cards.css';
 
 function Cards() {
   return (
-      <section className="cards-section">
-        <div className="section-hed">Selected Works &amp; Profile</div>
-  
-        <div className="grid">
-          <AboutCard />
-          <StatCard />
-          <ProjectsCard />
-          <SkillsCard />
-          <ExperienceCard />
-          <ContactCard />
-        </div>
-      </section>
-    );
+    <section className="portfolio-section">
+      <div className="portfolio-header">Selected Works & Profile</div>
+
+      <div className="portfolio-grid">
+        <AboutCard />
+        <StatCard />
+        <ProjectsCard />
+        <SkillsCard />
+        <ExperienceCard />
+        <ContactCard />
+      </div>
+    </section>
+  );
 }
 
 export default Cards
