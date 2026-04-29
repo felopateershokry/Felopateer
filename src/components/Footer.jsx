@@ -47,7 +47,7 @@ export default function Footer() {
       <div className="footer-main">
         {/* BRAND */}
         <div className="footer-brand-col">
-          <div className="footer-brand">
+          <div className="footer-brand" onClick={() => navigate("/")}>
             Felopateer<em>.</em>
           </div>
           <div className="footer-tagline">

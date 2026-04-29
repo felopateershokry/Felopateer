@@ -16,10 +16,8 @@ const Projects = () => {
     { id: "fullstack", label: "Full-Stack" },
     { id: "frontend", label: "Frontend" },
     { id: "backend", label: "Backend" },
-    { id: "HTML/CSS/Javascript", label: "HTML/CSS/Javascript" },
-    { id: "C", label: "C" },
-    { id: "python", label: "Python" },
-    { id: "java", label: "Java" },
+    { id: "ai", label: "Artificial Intelligence (AI)" },
+    { id: "hardware", label: "Hardware" },
   ];
 
   const filteredProjects =
@@ -65,13 +63,16 @@ const Projects = () => {
         </div>
 
         <div className="mag-links">
-          <a href={project.link} onClick={(e) => e.stopPropagation()}>
-            View Project →
-          </a>
-
-          <a href={project.github} onClick={(e) => e.stopPropagation()}>
-            Source
-          </a>
+          {project.links?.[0] && (
+            <a
+              href={project.links[0]}
+              target="_blank"
+              rel="noopener noreferrer"
+              onClick={(e) => e.stopPropagation()}
+            >
+              View Project <span aria-hidden="true">→</span>
+            </a>
+          )}
         </div>
       </div>
     </article>

@@ -213,7 +213,7 @@
 }
 
 .col-hed-rule {
-  height: 2px;
+  height: 1px;
   background: var(--ink);
   margin-bottom: 1rem;
 }

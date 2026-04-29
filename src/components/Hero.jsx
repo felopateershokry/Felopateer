@@ -28,7 +28,7 @@ export default function Hero() {
           <a className="btn-primary" onClick={() => navigate("/projects")}>
             View Projects
           </a>
-          <a href="#contact" className="btn-ghost">
+          <a className="btn-ghost" onClick={() => navigate("/contact")}>
             Get in touch
           </a>
         </div>

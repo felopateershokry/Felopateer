@@ -10,6 +10,7 @@ const SingleProject = () => {
   const [animate, setAnimate] = useState(false);
   const [activeImage, setActiveImage] = useState(0);
   const [isAnimating, setIsAnimating] = useState(false);
+  const [lightboxOpen, setLightboxOpen] = useState(false);
 
   const project = projects.find((p) => p.id === Number(id));
 
@@ -18,16 +19,26 @@ const SingleProject = () => {
     setTimeout(() => setAnimate(true), 100);
   }, [id]);
 
+  /* ================= KEYBOARD CONTROLS ================= */
+  useEffect(() => {
+    const handleKey = (e) => {
+      if (!lightboxOpen) return;
+
+      if (e.key === "Escape") setLightboxOpen(false);
+      if (e.key === "ArrowRight") nextImage();
+      if (e.key === "ArrowLeft") prevImage();
+    };
+
+    window.addEventListener("keydown", handleKey);
+    return () => window.removeEventListener("keydown", handleKey);
+  }, [lightboxOpen]);
+
   if (!project) return <div>Project not found</div>;
 
   const images = project.images || [project.image];
 
-  // safe index helper
-  const getImage = (index) => {
-    return images[(index + images.length) % images.length];
-  };
+  const getImage = (index) => images[(index + images.length) % images.length];
 
-  // prevent spam clicks / improve UX
   const changeImage = (action) => {
     if (isAnimating) return;
 
@@ -36,43 +47,36 @@ const SingleProject = () => {
 
     setTimeout(() => {
       setIsAnimating(false);
-    }, 450);
+    }, 400);
   };
 
-  const nextImage = () => {
-    changeImage(() => {
-      setActiveImage((prev) => (prev + 1) % images.length);
-    });
-  };
+  const nextImage = () =>
+    changeImage(() => setActiveImage((prev) => (prev + 1) % images.length));
 
-  const prevImage = () => {
-    changeImage(() => {
-      setActiveImage((prev) => (prev - 1 + images.length) % images.length);
-    });
-  };
+  const prevImage = () =>
+    changeImage(() =>
+      setActiveImage((prev) => (prev - 1 + images.length) % images.length),
+    );
 
   return (
     <div className={`single-project ${animate ? "active" : ""}`}>
-      {/* =========================
-          HERO CAROUSEL
-      ========================= */}
+      {/* ================= HERO CAROUSEL ================= */}
       <div className="hero-carousel">
         <button className="nav left" onClick={prevImage}>
           ‹
         </button>
 
         <div className="image-track">
-          {/* LEFT PREVIEW */}
           <div className="side-image left">
             <img
               src={getImage(activeImage - 1)}
-              alt="previous project view"
+              alt="previous view"
               loading="lazy"
             />
           </div>
 
           {/* MAIN IMAGE */}
-          <div className="main-image">
+          <div className="main-image" onClick={() => setLightboxOpen(true)}>
             <img
               src={getImage(activeImage)}
               alt={project.title}
@@ -80,11 +84,10 @@ const SingleProject = () => {
             />
           </div>
 
-          {/* RIGHT PREVIEW */}
           <div className="side-image right">
             <img
               src={getImage(activeImage + 1)}
-              alt="next project view"
+              alt="next view"
               loading="lazy"
             />
           </div>
@@ -95,9 +98,53 @@ const SingleProject = () => {
         </button>
       </div>
 
-      {/* =========================
-          ARTICLE SECTION
-      ========================= */}
+      {/* ================= LIGHTBOX ================= */}
+      {lightboxOpen && (
+        <div className="lightbox" onClick={() => setLightboxOpen(false)}>
+          {/* Close Button */}
+          <button
+            className="lightbox-close"
+            onClick={(e) => {
+              e.stopPropagation();
+              setLightboxOpen(false);
+            }}
+          >
+            ✕
+          </button>
+
+          {/* Left Arrow */}
+          <button
+            className="lightbox-nav left"
+            onClick={(e) => {
+              e.stopPropagation();
+              prevImage();
+            }}
+          >
+            ‹
+          </button>
+
+          {/* Image */}
+          <img
+            className="lightbox-image"
+            src={getImage(activeImage)}
+            alt="fullscreen preview"
+            onClick={(e) => e.stopPropagation()}
+          />
+
+          {/* Right Arrow */}
+          <button
+            className="lightbox-nav right"
+            onClick={(e) => {
+              e.stopPropagation();
+              nextImage();
+            }}
+          >
+            ›
+          </button>
+        </div>
+      )}
+
+      {/* ================= ARTICLE ================= */}
       <div className="article">
         <div className="title-block">
           <h1>{project.title}</h1>
@@ -113,12 +160,11 @@ const SingleProject = () => {
         </div>
 
         <div className="links">
-          <a href={project.link} target="_blank" rel="noreferrer">
-            Live Project →
-          </a>
-          <a href={project.github} target="_blank" rel="noreferrer">
-            Source Code →
-          </a>
+          {project.links.map((link, index) => (
+            <a key={index} href={link} target="_blank" rel="noreferrer">
+              {index === 0 ? "Live Project →" : "Secondary Link →"}
+            </a>
+          ))}
         </div>
 
         <button className="back" onClick={() => navigate(-1)}>

@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState  , useEffect } from "react";
 import "./Contact.css";
 import { assets } from './../assets/assets';
 import emailjs from "@emailjs/browser";
@@ -13,6 +13,12 @@ export default function Contact() {
   });
   const [submitted, setSubmitted] = useState(false);
   const [focused, setFocused] = useState("");
+
+
+    useEffect(() => {
+      window.scrollTo(0, 0);
+    }, []);
+
 
   const handleChange = (e) =>
     setFormData({ ...formData, [e.target.name]: e.target.value });
