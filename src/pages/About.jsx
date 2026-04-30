@@ -67,7 +67,7 @@ export default function About() {
             <div className="section-hed">Principles</div>
 
             <div className="philosophy-image-only">
-              <img src={assets.me} alt="Philosophy" />
+              <img src={assets.me2} alt="Philosophy" />
             </div>
           </div>
         </div>
