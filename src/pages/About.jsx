@@ -53,7 +53,7 @@ export default function About() {
             </p>
 
             <a
-              href="/assets/Felopateer_Shokry_CV.pdf"
+              href="/Felopateer_Shokry_CV.pdf"
               download="Felopateer_Shokry_CV.pdf"
               className="cv-btn"
             >
