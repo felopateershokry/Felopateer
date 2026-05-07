@@ -1,5 +1,6 @@
 import me from "./me.jpg";
 import me2 from "./me22.jpg";
+import logo from "./logo1.png";
 import homeproject1 from "./NFC project/home.png";
 import home2project1 from "./NFC project/home2.png";
 import nfcproject1 from "./NFC project/nfc.png";
@@ -70,6 +71,7 @@ import my_portfolio8 from "./My Portfolio/port8.png";
 export const assets = {
   me,
   me2,
+  logo,
   homeproject1,
   home2project1,
   nfcproject1,
